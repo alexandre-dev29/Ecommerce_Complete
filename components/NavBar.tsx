@@ -5,13 +5,12 @@ import { Cart } from "./Index";
 import { useStateContext } from "../context/StateContext";
 
 const NavBar = () => {
-  // @ts-ignore
-  const { totalQuantities, setShowCart, showCart } = useStateContext();
+  const { totalQuantities, setShowCart, showCart }: any = useStateContext();
   return (
     <div className={"navbar-container"}>
-      <p className={"logo"}>
+      <div className={"logo"}>
         <Link href={"/"}>AM Headphones</Link>
-      </p>
+      </div>
       <button
         type={"button"}
         className={"cart-icon"}

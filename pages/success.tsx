@@ -25,12 +25,12 @@ const Success = () => {
         </p>
         <h2>Thank you for your order</h2>
         <p className={"email-msg"}>Check your email inbox for the receipt.</p>
-        <p className={"description"}>
+        <div className={"description"}>
           if your have any question please email{" "}
           <a href={"mailto:axel.business29@gmail.com"} className={"email"}>
             axel.business29@gmail.com
           </a>{" "}
-        </p>
+        </div>
         <Link href={"/"}>
           <button type={"button"} className={"btn"} style={{ width: "300px" }}>
             {" "}

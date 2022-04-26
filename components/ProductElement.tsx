@@ -1,17 +1,18 @@
 import Link from "next/link";
 import React from "react";
 import { urlFor } from "../lib/client";
+import { Product } from "../SanityTypes";
 
 interface ProductPropsDescription {
-  product: any;
+  product: Product;
 }
 
-const Product = ({
+const ProductElement = ({
   product: { image, name, slug, price },
 }: ProductPropsDescription) => {
   return (
     <div>
-      <Link href={`/product/${slug.current}`}>
+      <Link href={`/product/${slug?.current}`}>
         <div className={"product-card"}>
           <img
             src={`${urlFor(image && image[0])}`}
@@ -28,4 +29,4 @@ const Product = ({
   );
 };
 
-export default Product;
+export default ProductElement;

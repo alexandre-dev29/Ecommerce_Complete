@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import {
-  AiOutlineMinusCircle,
   AiOutlinePlus,
   AiOutlineLeft,
   AiOutlineShopping,
@@ -79,7 +78,7 @@ const Cart = () => {
                   </div>
                   <div className={"flex bottom"}>
                     <div>
-                      <p className={"quantity-desc"}>
+                      <div className={"quantity-desc"}>
                         <span
                           className={"minus"}
                           onClick={() =>
@@ -97,7 +96,7 @@ const Cart = () => {
                         >
                           <AiOutlinePlus />
                         </span>
-                      </p>
+                      </div>
                     </div>
                     <button
                       type={"button"}

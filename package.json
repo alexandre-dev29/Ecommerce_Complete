@@ -29,6 +29,7 @@
     "@types/react-dom": "18.0.2",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
+    "sanity-codegen": "^0.9.8",
     "typescript": "4.6.3"
   }
 }

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { urlFor } from "../lib/client";
+import { Banner } from "../SanityTypes";
 interface HerroBannerTypes {
-  heroBanner: any;
+  heroBanner: Banner;
 }
 function HerroBanner({ heroBanner }: HerroBannerTypes) {
   return (

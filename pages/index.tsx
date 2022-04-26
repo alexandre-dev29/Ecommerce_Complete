@@ -1,7 +1,16 @@
 import type { NextPage } from "next";
-import { Product, HerroBanner, FooterBanner } from "../components/Index";
+import { ProductElement, HerroBanner, FooterBanner } from "../components/Index";
 import { client } from "../lib/client";
-const Home: NextPage = ({ products, bannerData }: any) => {
+import { Banner, Product } from "../SanityTypes";
+
+interface ProductsElementsData {
+  products: Product[];
+  bannerData: Banner[];
+}
+const Home: NextPage<ProductsElementsData> = ({
+  products,
+  bannerData,
+}: ProductsElementsData) => {
   return (
     <>
       <HerroBanner heroBanner={bannerData.length && bannerData[0]} />
@@ -10,8 +19,8 @@ const Home: NextPage = ({ products, bannerData }: any) => {
         <p>Speakers of many variations</p>
       </div>
       <div className={"products-container"}>
-        {products?.map((product: any) => (
-          <Product key={product._id} product={product} />
+        {products?.map((product) => (
+          <ProductElement key={product._id} product={product} />
         ))}
       </div>
       <FooterBanner footerBanner={bannerData.length && bannerData[0]} />

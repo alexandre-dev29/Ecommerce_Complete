@@ -1,9 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import { urlFor } from "../lib/client";
+import { Banner } from "../SanityTypes";
 
 interface FooterBannerInterface {
-  footerBanner: any;
+  footerBanner: Banner;
 }
 const FooterBanner = ({
   footerBanner: {
@@ -36,7 +37,11 @@ const FooterBanner = ({
             <button type={"button"}> {buttonText}</button>
           </Link>
         </div>
-        <img src={`${urlFor(image)}`} className={"footer-banner-image"} />
+        <img
+          src={`${urlFor(image)}`}
+          className={"footer-banner-image"}
+          alt={"image element"}
+        />
       </div>
     </div>
   );
