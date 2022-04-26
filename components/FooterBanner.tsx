@@ -4,7 +4,7 @@ import { urlFor } from "../lib/client";
 import { Banner } from "../SanityTypes";
 
 interface FooterBannerInterface {
-  footerBanner: Banner;
+  footerBanner: any | Banner;
 }
 const FooterBanner = ({
   footerBanner: {
