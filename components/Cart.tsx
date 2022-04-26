@@ -14,7 +14,6 @@ import getStripe from "../lib/getStripe";
 
 const Cart = () => {
   const cartRef: any = useRef();
-  // @ts-ignore
   const {
     totalQuantities,
     setShowCart,
