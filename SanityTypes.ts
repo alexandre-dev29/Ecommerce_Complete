@@ -77,7 +77,7 @@ export interface Product extends SanityDocument {
    *
    *
    */
-  price?: number;
+  price: number;
 
   /**
    * Details — `string`
@@ -85,6 +85,8 @@ export interface Product extends SanityDocument {
    *
    */
   details?: string;
+
+  quantity: number;
 }
 
 /**

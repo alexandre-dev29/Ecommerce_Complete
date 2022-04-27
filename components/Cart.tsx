@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   AiOutlinePlus,
@@ -7,33 +7,39 @@ import {
   AiOutlineMinus,
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
-import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import toast from "react-hot-toast";
 import getStripe from "../lib/getStripe";
+import { useECommerceStore } from "../context/productStates";
 
 const Cart = () => {
   const cartRef: any = useRef();
   const {
     totalQuantities,
     setShowCart,
-    cartItems,
+    cardItems,
     totalPrice,
     toggleCartItemQuantity,
     onRemove,
-  }: any = useStateContext();
+  } = useECommerceStore();
+  const [isSSR, setIsSSR] = useState(true);
   const handleCheckout = async () => {
     const stripe = await getStripe();
     const response = await fetch("/api/stripe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(cartItems),
+      body: JSON.stringify(cardItems),
     });
     if (response.status === 5000) return;
     const data = await response.json();
     toast.loading("Redirecting...");
     stripe?.redirectToCheckout({ sessionId: data.id });
   };
+
+  useEffect(() => {
+    setIsSSR(false);
+  }, []);
+
   return (
     <div className={"cart-wrapper"} ref={cartRef}>
       <div className={"cart-container"}>
@@ -46,7 +52,7 @@ const Cart = () => {
           <span className={"heading"}>Your Cart</span>
           <span className={"cart-num-items"}>({totalQuantities} items)</span>
         </button>
-        {cartItems.length < 1 && (
+        {!isSSR && cardItems.length < 1 && (
           <div className={"empty-cart"}>
             <AiOutlineShopping size={150} />
             <h3>Your shopping bag is empty</h3>
@@ -62,8 +68,8 @@ const Cart = () => {
           </div>
         )}
         <div className={"product-container"}>
-          {cartItems.length >= 1 &&
-            cartItems.map((item: any) => (
+          {cardItems.length >= 1 &&
+            cardItems.map((item: any) => (
               <div className={"product"} key={item._id}>
                 <img
                   src={`${urlFor(item?.image[0])}`}
@@ -109,7 +115,7 @@ const Cart = () => {
               </div>
             ))}
         </div>
-        {cartItems.length >= 1 && (
+        {cardItems.length >= 1 && (
           <div className={"cart-bottom"}>
             <div className={"total"}>
               <h3>SubTotal</h3>

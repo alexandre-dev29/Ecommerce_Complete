@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { AiOutlineShopping } from "react-icons/ai";
 import { Cart } from "./Index";
-import { useStateContext } from "../context/StateContext";
+import { useECommerceStore } from "../context/productStates";
 
 const NavBar = () => {
-  const { totalQuantities, setShowCart, showCart }: any = useStateContext();
+  const { totalQuantities, setShowCart, showCart } = useECommerceStore();
   const [isSSR, setIsSSR] = useState(true);
   useEffect(() => {
     setIsSSR(false);

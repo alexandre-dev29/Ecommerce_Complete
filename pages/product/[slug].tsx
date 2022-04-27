@@ -6,10 +6,10 @@ import {
   AiOutlineStar,
 } from "react-icons/ai";
 import { useState } from "react";
-import { useStateContext } from "../../context/StateContext";
 import { Product } from "../../SanityTypes";
 import { NextPage } from "next";
 import { ProductElement } from "../../components/Index";
+import { useECommerceStore } from "../../context/productStates";
 
 interface ProductDetailsElementsData {
   products: Product[];
@@ -23,7 +23,7 @@ const ProductDetails: NextPage<ProductDetailsElementsData> = ({
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
 
-  const { decQty, incQty, qty, onAdd, setShowCart }: any = useStateContext();
+  const { decQty, incQty, qty, onAdd, setShowCart } = useECommerceStore();
 
   function handleBuyNow() {
     onAdd(product, qty);

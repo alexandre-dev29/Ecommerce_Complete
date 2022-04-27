@@ -20,7 +20,8 @@
     "react-dom": "18.0.0",
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",
-    "stripe": "^8.219.0"
+    "stripe": "^8.219.0",
+    "zustand": "^4.0.0-rc.0"
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.4.2",
